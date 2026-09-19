@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "window-locator"
+version = "0.1.0"
+description = "Windows 显示器几何与前台窗口查询，全部用物理像素（Physical-pixel monitor geometry for Windows）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later" }
+keywords = [
+    "windows",
+    "win32",
+    "monitor",
+    "multi-monitor",
+    "dpi",
+    "dpi-awareness",
+    "screen",
+    "foreground-window",
+    "ctypes",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Hardware",
+    "Typing :: Typed",
+]
+
+# 零运行时依赖：ctypes 是标准库。非 Windows 上可 import，调用时抛 Win32Unavailable。
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/canyueY/window-locator"
+Repository = "https://github.com/canyueY/window-locator"
+Issues = "https://github.com/canyueY/window-locator/issues"
+Changelog = "https://github.com/canyueY/window-locator/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["window_locator*"]
+
+[tool.setuptools.package-data]
+window_locator = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
