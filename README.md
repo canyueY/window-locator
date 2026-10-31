@@ -191,3 +191,8 @@ uv run --python 3.10 --extra dev python -m pytest tests -q
 - **纯逻辑层**（`Rect` / 覆盖率 / 整词匹配）在任何平台都跑，所以 Linux CI 也能验证。
 - **Win32 层**用 `skipif` 跳过，在真机上验证显示器枚举、前台窗口矩形、
   DPI 上下文还原、以及"异常时回调只执行一次"。
+
+
+---
+
+> **为什么还要开发 Mnemosyne？** [阅读全文 →](WHY_MNEMOSYNE.md)
